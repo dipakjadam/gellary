@@ -1,0 +1,2 @@
+$("#photo_<%=@comment.photo_id%> #comment ").append("<%= escape_javascript render :partial => 'albums/comment', :locals => { :comment => @comment}  %>");
+$(".show1").slideToggle("slow");

@@ -1,0 +1,8 @@
+<div id ="index">
+  <h3>All Alblums</h3>
+    <div id ="album">
+      <% @albums.each do |album| %>
+	<%= render :partial => 'album', :locals => { :album => album} %>
+      <% end %>
+    </div>
+</div>

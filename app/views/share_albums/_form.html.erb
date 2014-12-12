@@ -1,0 +1,17 @@
+<%= form_for [@sharealbum] do |f| %>
+ <div>
+  <b>All users :</b>
+  </div>
+  <div><% @users.each do |user| %>
+   <b><%= user.user_name %> :: <%= user.id %></b><br>
+   <% end %>
+   </div>
+ 
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

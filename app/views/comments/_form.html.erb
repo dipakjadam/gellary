@@ -1,0 +1,25 @@
+
+  <%= form_for([current_user,  @album, @photo, @comment], :remote => true) do |f| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+        <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :photo_id, :value => @photo.id %>
+   
+    <div class="field">
+      <%= f.label :Add_comment %><br>
+      <%= f.text_field :user_comment %>
+    </div>
+    <div class="actions">
+      <%= f.submit  value ="submit"%>
+    </div >
+  <% end %>
+

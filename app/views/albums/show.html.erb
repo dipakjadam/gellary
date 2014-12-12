@@ -1,0 +1,41 @@
+<style> 
+  #show
+    {
+      padding-top: 25px;
+      display:none;
+    }
+
+</style>
+    <div id="new" ><h3>new photo<h3></div>
+      <div id ="photo">
+	<% @album.photos.each do |photo| %>
+	<%= render :partial => 'photo', :locals => { :photo => photo} %>
+
+	<% end %>
+
+    <div id="show" >
+      <%= render :partial => "photos/form", :locals => {:user => current_user, :album => @album, :@photo => @album.photos.new} %>
+    </div>
+    
+  </div>
+
+  <script type="text/javascript">
+     $(document).ready(function(){
+      $("#new").click(function(){
+          $("#show").slideToggle("slow");
+        });
+        $("#new").click(function(){
+          $(".show1").hide();
+           });
+          $(".new1").click(function(){
+            $('.show1').each(function() {
+                if ($(this).css('display') == 'block') {
+                    $(this).slideToggle("slow");
+                }
+            });
+            var photo_id = this.id;
+            setTimeout(function(){$("#photo_" + photo_id + " .show1").slideToggle("slow")}, 100);
+          });
+    });
+  </script>
+ 

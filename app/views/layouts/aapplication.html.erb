@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gellary</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+  <% if current_user.present? %>
+    <%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %>
+    &nbsp;&nbsp;&nbsp;
+    <%= link_to 'view albums', user_albums_path(current_user) %>
+
+    &nbsp;&nbsp;&nbsp;
+    <%= link_to 'create new', new_user_album_path(current_user) %>
+  <% else %>
+    <%= link_to 'SignIn', new_user_session_path %>
+    <%= link_to 'Singup', new_user_registration_path %>
+  <% end %>
+</div>
+<%= yield %>
+
+</body>
+</html>

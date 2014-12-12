@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Photo:</strong>
+  <%= @comment.photo_id %>
+</p>
+
+<p>
+  <strong>User comment:</strong>
+  <%= @comment.user_comment %>
+</p>
+
+
+<%= link_to 'Delete', user_album_photo_comment_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_user_album_photo_comment_path %>
+

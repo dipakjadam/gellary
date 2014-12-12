@@ -1,0 +1,41 @@
+  
+  <style> 
+    .show1
+      {
+	padding-top: 25px;
+	display:none;
+      }
+  </style>
+    <div id="photo_<%= photo.id %>" >
+        <div id="update_photo">
+	      <%= link_to 'Edit', edit_user_album_photo_path(current_user, @album, photo) %>
+	       <%= link_to 'Destroy', user_album_photo_path(current_user , @album, photo), method: :delete, :remote => true,:class => 'delete_photo', data: { confirm: 'Are you sure?' } %>
+              <span class="new1" id="<%= photo.id %>">comment</span>
+	       <%= link_to 'Add coverpage', set_cover_user_album_photo_path(current_user ,@album, photo.id ) %>
+        </div>
+    
+	       <div>
+	           <%= image_tag photo.avatar.url %>
+	       </div>
+  
+	     
+	             <div id="comment">
+	                 <% photo.comments.each do |comment| %>
+	                 <%= render :partial => 'comment', :locals => { :comment => comment, :photo => photo,:album => photo.album_id} %>
+	                 <% end %>
+	             </div>
+	  
+	                 <div class ="show1" >
+                            <%= render :partial => "comments/form", :locals => {:user => current_user, :album => @album, :@photo => photo, :@comment => photo.comments.new} %>
+                        </div>
+                        <br>
+    </div>
+
+
+ <script type="text/javascript">
+    $(document).ready(function(){
+          $(".new1").click(function(){
+            $("#show").hide();
+      });
+    });
+  </script>
